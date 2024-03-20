@@ -1,0 +1,29 @@
+@API_HostAddress = http://localhost:5054
+
+# @name create
+POST {{API_HostAddress}}/v1/applications
+Content-Type: application/json
+
+{
+    "code": "HHBF"
+}
+
+###
+# @name getById
+@id = {{create.response.body.$.id}}
+
+GET {{API_HostAddress}}/v1/applications/{{id}}
+Accept: application/json
+
+###
+
+# @name getAll
+GET {{API_HostAddress}}/v1/applications
+Accept: application/json
+
+###
+# @name delete
+@id = {{create.response.body.$.id}}
+
+DELETE {{API_HostAddress}}/v1/applications/{{id}}
+Accept: application/json
